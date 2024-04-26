@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Style.css') }}">
+</head>
+
+<body>
+  <section class="inicio">
+    <div class="porta2">
+      <div class="form-container">
+        <form action="/iniciar_sesion" method="POST" class="form" onsubmit="return validarInicioSesion()">
+          <p>Iniciar Sesión</p>
+          <div>
+            <label for="usuario">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" class="input" placeholder="Nombre de usuario">
+          </div>
+          <div>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" class="input" placeholder="Contraseña">
+          </div>
+          <button type="submit">Iniciar Sesión</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

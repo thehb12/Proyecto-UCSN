@@ -1,0 +1,22 @@
+// Código JavaScript (validacion.js)
+function validarInicioSesion() {
+  // Obtén los valores de usuario y contraseña desde los campos de entrada.
+  var usuario = document.getElementById("usuario").value;
+  var contraseña = document.getElementById("contraseña").value;
+
+  // Elimina los espacios en blanco al principio y al final de los valores.
+  usuario = usuario.trim();
+  contraseña = contraseña.trim();
+
+  // Verifica si alguno de los campos está vacío.
+  if (usuario === "" || contraseña === "") {
+    Swal.fire({
+      title: "Error",
+      text: "Por favor ingrese usuario y contraseña.",
+      icon: "error",
+    });
+
+    // Devuelve false para evitar que se envíe el formulario.
+    return false;
+  }
+}
