@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash, make_response
+from flask import Flask, render_template, request, redirect, url_for, session, flash, make_response, jsonify
 from flask_mysqldb import MySQL
 from config import Config
 import hashlib
-from flask_sweetalert2 import sweetalert2
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -46,7 +46,6 @@ def index():
 
 
 
-
 @app.route('/iniciar_sesion', methods=['POST'])
 def iniciar_sesion():
     usuario = request.form['usuario']
@@ -54,8 +53,7 @@ def iniciar_sesion():
 
     # Verificar si alguno de los campos está vacío
     if not usuario or not contrasena:
-        flash('Por favor ingrese usuario y contraseña.', 'error')
-        return redirect(url_for('index'))
+        return jsonify(success=False, message='Por favor ingrese usuario y contraseña.')
 
     hashed_password = hashlib.sha256(contrasena.encode()).hexdigest()
 
@@ -67,21 +65,16 @@ def iniciar_sesion():
 
     if usuario_admin:
         session['logged_in'] = True
-        print('1')
-        return redirect(url_for('admin'))
+        return jsonify(success=True, message='Ingreso exitoso.')
     else:
         cursor.execute("SELECT id FROM personalucsn WHERE correo = %s AND contraseña_hash = %s", (usuario, hashed_password))
         usuario_personal = cursor.fetchone()
 
         if usuario_personal:
             session['logged_in'] = True
-            print('2')
-            return redirect(url_for('sesion'))
+            return jsonify(success=True, message='Ingreso exitoso.')
         else:
-            flash('Usuario o contraseña incorrectos', 'error')
-            print('3')
-            return redirect(url_for('index'))
-        
+            return jsonify(success=False, message='Usuario o contraseña incorrectos.')
 
     
  
