@@ -1,0 +1,90 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<div class="contenedor">
+    <div class="contenedor-cuadro">
+        <div class="sidebar">
+            <a id="Registrar" href=""><i class="fa-solid fa-folder-plus"></i>Registrar trabajadores</a>
+            <a id="paprendices" href=""><i class="fa-solid fa-users-line"></i>Permisos Aprendices</a>
+            <a id="retardos" href=""><i class="fa-regular fa-id-card"></i>Retardo de Aprendices</a>
+            <a id="pfichas" href=""><i class="fa-solid fa-user-tie"></i>Permisos Instructores</a>
+            <a id="abrirModal"><i class="fa-solid fa-users-between-lines "></i>Permiso Ficha Completa</a>
+
+            <a id="cerrarsesion" href="{{ url_for('cerrar_sesion') }}"><i
+                    class="fa-solid fa-right-to-bracket"></i>Cerrar
+                Sesión</a>
+        </div>
+    </div>
+</div>
+<style>
+    .contenedor {
+        display: flex;
+        justify-content: center;
+
+        width: 20%;
+        height: 100vh;
+        background-color: #4e8e37;
+        border-right: 2px solid #4e8e37;
+    }
+
+    .contenedor-cuadro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 85vh;
+        background-color: #ffffff7c;
+        border-radius: 10px;
+        /* background-color: red; */
+    }
+
+    /* BARRA DE OPCIONES */
+
+
+    /* -------------------- */
+    .sidebar {
+
+        width: 80%;
+        height: 100%;
+        /* background-color: red; */
+
+
+        border-radius: 10px;
+    }
+
+    .sidebar a {
+
+        /* border-bottom: 1px solid #4e8e37; */
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        color: #111111;
+        font-size: 15px;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 0px;
+        transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+        /* zoom: 130%; */
+        border-bottom: 1px solid;
+        border-radius: 10px;
+        background-color: white;
+        font-weight: bold;
+        color: #4e8e37;
+
+    }
+
+    .sidebar a {
+        width: 100%;
+        margin-top: 5%;
+        /* background-color: yellow; */
+    }
+
+    .sidebar a i {
+        /* background-color: yellow; */
+        margin-left: 5%;
+        font-size: 24px;
+        padding: 24.8px 5px;
+    }
+</style>

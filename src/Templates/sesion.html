@@ -17,3 +17,11 @@
 <footer>
   <p>&copy; 2024 Unidad Clinica San Nicolas</p>
 </footer>
+<script>
+  {% if mensaje %}
+  Swal.fire({
+      title: "{{ mensaje }}",
+      icon: "{{ icon }}"
+  });
+  {% endif %}
+</script>

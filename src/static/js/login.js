@@ -42,38 +42,4 @@ function validarInicioSesion() {
   return true;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  document
-    .getElementById("login-form")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
 
-      var formData = new FormData(this);
-
-      fetch("/iniciar_sesion", {
-        method: "POST",
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            Swal.fire({
-              title: "¡Éxito!",
-              text: data.message,
-              icon: "success",
-            }).then(() => {
-              window.location.href = "/"; // Redireccionar a la página de inicio después del éxito
-            });
-          } else {
-            Swal.fire({
-              title: "Error",
-              text: data.message,
-              icon: "error",
-            });
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    });
-});

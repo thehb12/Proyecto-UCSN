@@ -6,6 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    
+    {% include 'menuadmin.html' %}
+    <script>
+        {% if mensaje %}
+        Swal.fire({
+            title: "{{ mensaje }}",
+            icon: "{{ icon }}"
+        });
+        {% endif %}
+      </script>
 </body>
 </html>
