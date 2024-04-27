@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_mysqldb import MySQL
 from config import Config
 import hashlib
+from flask_sweetalert2 import sweetalert2
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -19,38 +20,70 @@ def index():
         return render_template('index.html')
 
 
+
+# @app.route('/iniciar_sesion', methods=['POST'])
+# def iniciar_sesion():
+#     usuario = request.form['usuario']
+#     contrasena = request.form['contrasena']
+#     hashed_password = hashlib.sha256(contrasena.encode()).hexdigest()
+
+#     conn = mysql.connection
+#     cursor = conn.cursor()
+
+#     cursor.execute("SELECT id FROM personalucsn WHERE correo = %s AND contraseña_hash = %s", (usuario, hashed_password))
+#     usuario_personal = cursor.fetchone()
+
+#     if usuario_personal:
+#         session['logged_in'] = True
+#         print('2')
+#         return redirect(url_for('sesion'))
+#     else:
+#         # Si no es ni administrador ni usuario regular, redirige al index
+#         flash('Usuario o contraseña incorrectos', 'error')
+#         print('3')
+#         return redirect(url_for('index'))
+
+
+
+
+
 @app.route('/iniciar_sesion', methods=['POST'])
 def iniciar_sesion():
     usuario = request.form['usuario']
     contrasena = request.form['contrasena']
+
+    # Verificar si alguno de los campos está vacío
+    if not usuario or not contrasena:
+        flash('Por favor ingrese usuario y contraseña.', 'error')
+        return redirect(url_for('index'))
 
     hashed_password = hashlib.sha256(contrasena.encode()).hexdigest()
 
     conn = mysql.connection
     cursor = conn.cursor()
 
-    # Buscar en la tabla de usuarios
     cursor.execute("SELECT id FROM usuarios WHERE id_documento = %s AND contraseña_hash = %s", (usuario, hashed_password))
-    usuario_encontrado = cursor.fetchone()
+    usuario_admin = cursor.fetchone()
 
-    # Si el usuario se encuentra en la tabla de usuarios, es admin
-    if usuario_encontrado:
+    if usuario_admin:
         session['logged_in'] = True
+        print('1')
         return redirect(url_for('admin'))
     else:
-        # Si no se encuentra en la tabla de usuarios, buscar en la tabla de personalucsn
         cursor.execute("SELECT id FROM personalucsn WHERE correo = %s AND contraseña_hash = %s", (usuario, hashed_password))
         usuario_personal = cursor.fetchone()
-        if usuario_personal:
-            if usuario_personal[0] == hashed_password:
-                session['logged_in'] = True
-                return redirect(url_for('sesion'))
-        
-        flash('Usuario o contraseña incorrectos', 'error')
-        return redirect(url_for('index'))
 
-    cursor.close()
-   
+        if usuario_personal:
+            session['logged_in'] = True
+            print('2')
+            return redirect(url_for('sesion'))
+        else:
+            flash('Usuario o contraseña incorrectos', 'error')
+            print('3')
+            return redirect(url_for('index'))
+        
+
+    
  
 
 @app.route('/admin')
