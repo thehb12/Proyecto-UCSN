@@ -34,10 +34,7 @@ body{
     transition: width 0.5s;
     overflow-x: hidden;
 }
-.navigation.active {
-    /* width: 300px; */
-    width: 19.55%;
-}
+
 
 .navigation ul {
     /* position: absolute; */
@@ -54,9 +51,7 @@ body{
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
-.navigation ul li.active {
-    background: #fff;
-}
+
 .navigation ul li b:nth-child(1) {
     position: absolute;
     top: -20px;
@@ -93,10 +88,7 @@ body{
     border-top-right-radius: 20px;
     background: #3cb3c3;
 }
-.navigation ul li.active b:nth-child(1),
-.navigation ul li.active b:nth-child(2) {
-    display:block;
-}
+
 .navigation ul li a {
     position: relative;
     display: block;
@@ -105,9 +97,7 @@ body{
     text-decoration: none;
     color: #fff;
 }
-.navigation ul li.active a {
-    color: #333;
-}
+
 .navigation ul li a .icon {
     position: relative;
     display: block;
@@ -126,4 +116,21 @@ body{
     height: 60px;
     line-height: 60px;
     white-space: normal;
+}
+
+
+.navigation ul li.active a {
+    color: #333;
+}
+.navigation ul li.active b:nth-child(1),
+.navigation ul li.active b:nth-child(2) {
+    display:block;
+}
+
+.navigation ul li.active {
+    background: #fff;
+}
+.navigation.active {
+    
+    width: 19.55%;
 }

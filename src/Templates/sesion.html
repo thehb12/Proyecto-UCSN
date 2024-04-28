@@ -1,23 +1,26 @@
-<head>
-  <link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='css/usuario.css') }}"
-  />
-  <!-- <link rel="stylesheet" href="../static/css/usuario.css"> -->
-  <title>Bienvenido</title>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sesion</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/usuario.css') }}"
+    />
+    <link rel="stylesheet" href="../static/css/usuario.css">
+  </head>
 
-{% include 'header.html' %}
+  <body>
+    {% include 'menuadmin.html' %} {% include 'header.html' %}
 
-<!-- <script src="../static/js/desplegable.js"></script> -->
-<footer>
-  <p>&copy; 2024 Unidad Clinica San Nicolas</p>
-</footer>
-<script>
-  {% if mensaje %}
-  Swal.fire({
-      title: "{{ mensaje }}",
-      icon: "{{ icon }}"
-  });
-  {% endif %}
-</script>
+    <script>
+      {% if mensaje %}
+      Swal.fire({
+          title: "{{ mensaje }}",
+          icon: "{{ icon }}"
+      });
+      {% endif %}
+    </script>
+  </body>
+</html>
