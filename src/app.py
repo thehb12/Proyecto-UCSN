@@ -5,7 +5,7 @@ import hashlib
 
 
 app = Flask(__name__)
-app.config.from_object(Config)
+app.config.from_object(Config) 
 
 mysql = MySQL(app)
 
@@ -93,14 +93,18 @@ def iniciar_sesion():
 @app.route('/admin')
 def admin():
     if 'cargo' in session:
-        return render_template('admin.html')
+        response = make_response(render_template('admin.html'))
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'  # Deshabilitar la caché
+        return response
     else:
         return redirect(url_for('index'))
 
 @app.route('/sesion')
 def sesion():
     if 'cargo' in session:
-        return render_template('sesion.html')
+        response = make_response(render_template('sesion.html'))
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'  # Deshabilitar la caché
+        return response
     else:
         flash('Acceso no autorizado', 'error')
         return redirect(url_for('index'))

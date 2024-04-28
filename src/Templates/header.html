@@ -1,13 +1,19 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}"/>
+<script src="{{ url_for('static', filename='js/desplegable.js') }}"></script>
+
 <header>
+  
   <nav class="navbar">
     <div class="nav-logo">
-      <a style="text-decoration: none; display: flex; align-items: center;" href="{{ url_for('sesion') }}"
+      <a
+        style="text-decoration: none; display: flex; align-items: center"
+        href="{{ url_for('sesion') }}"
         ><img src="{{ url_for('static', filename='images/Recurso 1.png') }}" />
         <span>Unidad Clinica San Nicolas</span>
       </a>
     </div>
     <ul class="nav-links">
-      <li class="dropdown">
+      <!-- <li class="dropdown">
         <a href="#" class="dropdown-toggle" id="dropdown-toggle-usuario">
           Certificados de Trabajo <i class="fa-solid fa-bars"></i
           ><span class="arrow">▼</span>
@@ -18,7 +24,7 @@
           <li><a href="#laboral">Certificado 3</a></li>
           <li><a href="#laboral">Certificado 4</a></li>
         </ul>
-      </li>
+      </li> -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" id="dropdown-toggle-certificados">
           Nombre Completo Del Usuario <span class="arrow">▼</span>
@@ -33,89 +39,3 @@
     </ul>
   </nav>
 </header>
-<style>
-  header {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-  }
-
-  .navbar {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-  }
-
-  .nav-logo img {
-    height: 50px;
-    margin-right: 10px;
-  }
-
-  .nav-logo span {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #333;
-  }
-
-  .nav-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-
-  .nav-links li {
-    margin-right: 30px;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.2em;
-    transition: all 0.3s;
-  }
-
-  .nav-links a:hover {
-    color: rgb(47, 198, 198);
-    /* text-shadow: 0 4px 7px rgba(0, 0, 0, 0.3); */
-  }
-
-  .dropdown {
-    position: relative;
-  }
-
-  .dropdown-toggle {
-    display: flex;
-    align-items: center;
-  }
-
-  .arrow {
-    margin-left: 5px;
-    /* Espacio entre el texto y la flecha */
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    top: 223%;
-    left: 0;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: none;
-    width: 100%;
-    padding: 20px;
-  }
-
-  .dropdown-menu li {
-    margin: 10px 0;
-  }
-
-  .dropdown-menu a {
-    color: #333;
-    font-size: 1em;
-  }
-</style>

@@ -1,38 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
 
-* {
+
+
+html, body {
+    
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-}
-
-body {
+    width: 100%;
+    height: 100%;
     min-height: 100vh;
     background: #fff;
 }
+body{
+    display: flex;
+}
 .navigation {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    bottom: 20px;
-    width: 70px;
-    border-radius: 10px;
-    box-sizing: inherit;
-    border-left: 5px solid #4885A3;
-    background: #4885A3;
+    /* position: fixed; */
+    /* top: 0px; */
+    /* left: 10px; */
+    /* bottom: 0px; */
+    /* width: 70px; */
+    width: 4.60%;
+    height: 100%;
+    overflow: hidden;
+    /* border-radius: 10px; */
+    /* box-sizing: inherit; */
+    border-left: 5px solid #3cb3c3;
+    background: #3cb3c3;
+    /* #3cb3c3 */
     transition: width 0.5s;
     overflow-x: hidden;
 }
 .navigation.active {
-    width: 300px;
+    /* width: 300px; */
+    width: 19.55%;
 }
 
 .navigation ul {
-    position: absolute;
-    top: 0;
-    left: 0;
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0; */
     width: 100%;
     padding-left: 5px;
     padding-top: 40px;
@@ -63,7 +73,7 @@ body {
     width: 100%;
     height: 100%;
     border-bottom-right-radius: 20px;
-    background: #4885A3;
+    background: #3cb3c3;
 }
 .navigation ul li b:nth-child(2) {
     position: absolute;
@@ -81,7 +91,7 @@ body {
     width: 100%;
     height: 100%;
     border-top-right-radius: 20px;
-    background: #4885A3;
+    background: #3cb3c3;
 }
 .navigation ul li.active b:nth-child(1),
 .navigation ul li.active b:nth-child(2) {
@@ -117,38 +127,3 @@ body {
     line-height: 60px;
     white-space: normal;
 }
-/* 
-.toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: #4885A3;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-.toggle.active {
-    background: #59A4C9;
-}
-
-.toggle ion-icon {
-    position: absolute;
-    color: #fff;
-    font-size: 34px;
-    display: none;
-}
-.toggle ion-icon.open,
-.toggle.active ion-icon.close {
-    display: block;
-}
-.toggle ion-icon.close,
-.toggle.active ion-icon.open {
-    display: none;
-}
-
- */

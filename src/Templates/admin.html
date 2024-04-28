@@ -1,107 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="../static/css/admin.css" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/menuadmin.css') }}"
+      href="{{ url_for('static', filename='css/admin.css') }}"
     />
-</head>
+    
+  </head>
 
-<body>
-    <div class="navigation">
-
-        <ul>
-
-
-            <li class="">
-                <b></b>
-                <b></b>
-                <a href="#" class="toggle">
-                    <span class="icon">
-
-
-                        <ion-icon name="menu-outline" class="open"></ion-icon>
-                        <!-- <ion-icon name="close-outline" class="close"></ion-icon> -->
-                    </span>
-                    <!-- <span class="icon"><ion-icon name="person-outline"></ion-icon></span> -->
-                    <span class="title">Menu</span>
-                </a>
-            </li>
-            <li class="list active">
-
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                    <span class="title">Home</span>
-                </a>
-            </li>
-            <li class="list">
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <span class="title">Profile</span>
-                </a>
-            </li>
-            <li class="list">
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span>
-                    <span class="title">Message</span>
-                </a>
-            </li>
-            <li class="list">
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
-                    <span class="title">Setting</span>
-                </a>
-            </li>
-            <li class="list">
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><ion-icon name="information-circle-outline"></ion-icon></span>
-                    <span class="title">Help</span>
-                </a>
-            </li>
-            <li class="list">
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <span class="title">Password</span>
-                </a>
-            </li>
-            <li class="list">
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                    <span class="title">Sing Out</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+  <body>
+    {% include 'menuadmin.html' %} {% include 'header.html' %}
 
     <script>
-        {% if mensaje %}
-        Swal.fire({
-            title: "{{ mensaje }}",
-            icon: "{{ icon }}"
-        });
-        {% endif %}
+      {% if mensaje %}
+      Swal.fire({
+          title: "{{ mensaje }}",
+          icon: "{{ icon }}"
+      });
+      {% endif %}
     </script>
-</body>
-
+  </body>
+  
 </html>
