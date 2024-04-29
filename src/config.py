@@ -1,5 +1,4 @@
 # config.py
-
 class Config:
     MYSQL_HOST = 'localhost'
     MYSQL_USER = 'clinica_san_nicolas'
