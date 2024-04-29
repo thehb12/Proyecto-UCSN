@@ -73,10 +73,13 @@ def iniciar_sesion():
         numero_id_usuario = usuario[2]
         nombre_usuario = usuario[1]
         cargo = usuario[5]
+        fecha_inicio = usuario[7]
         correo = usuario[0]
     
+
         session['numero_id'] = numero_id_usuario
         session['nombres'] = nombre_usuario
+        session['fecha_inicio'] = fecha_inicio
         session['cargo'] = cargo
         session['correo'] = correo
         
@@ -117,6 +120,24 @@ def sesion():
             return redirect('/')
     else:
         return redirect('/')
+
+
+# @app.route('/certificado')
+# def certificado():
+#     if 'cargo'  in session :
+#         cargo = session['cargo']
+#         nombre_usuario = session.get('nombres')
+#         if cargo != 'Admin':
+
+
+
+#             response = make_response(render_template('certificados.html', nombre_usuario=nombre_usuario))
+#             response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'  
+#             return response
+#         else:
+#             return redirect('/')
+#     else:
+#         return redirect('/')
 
 
 @app.route('/perfil')

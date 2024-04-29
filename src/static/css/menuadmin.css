@@ -7,7 +7,10 @@
   /* left: 10px; */
   /* bottom: 0px; */
   /* width: 70px; */
-  width: 4.6%;
+  /* width: 4.6%; */
+  width: 71px;
+  /* min-width: 70px; */
+  
   height: 100%;
   overflow: hidden;
   /* border-radius: 10px; */
@@ -18,7 +21,9 @@
   transition: width 0.5s;
   overflow-x: hidden;
 }
-
+.navigation:hover{
+  width: 374px;
+}
 .navigation ul {
   /* position: absolute; */
   /* top: 0; */
@@ -121,7 +126,9 @@
 }
 
 .navigation.active {
-  width: 19.55%;
+  /* width: 19.55%; */
+  width: 374px;
+  
 }
 
 .listo {
