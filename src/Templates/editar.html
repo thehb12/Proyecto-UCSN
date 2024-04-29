@@ -1,51 +1,37 @@
 <head>
   <title>Document</title>
-  <link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='css/editar.css') }}"
-  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/editar.css') }}" />
+  <link rel="icon" href="../static/images/Recurso-1.ico">
 </head>
 {% include 'header.html' %}
 <div id="content">
   <section class="profile-edit">
     <h2>Información Personal</h2>
     <form action="/update-profile" method="post" enctype="multipart/form-data">
-      <!-- Campo para la contraseña -->
+      <!-- Campo para la contraseña actual -->
       <div class="form-group">
-        <label for="password">Nueva Contraseña:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Nueva contraseña"
-        />
-      </div>
-      <div class="form-group">
-        <label for="password">Repite la Contraseña:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Repite la contraseña"
-        />
+        <label for="current-password">Contraseña Actual:</label>
+        <input type="password" id="current-password" name="current_password" placeholder="Ingrese su contraseña actual"
+          required />
       </div>
 
-      <!-- Campo para subir una foto de perfil -->
+      <!-- Campo para la nueva contraseña -->
       <div class="form-group">
-        <label for="profile-picture">Cambia tu foto de perfil:</label>
-        <input
-          type="file"
-          id="profile-picture"
-          name="profile-picture"
-          accept="image/*"
-        />
+        <label for="password">Nueva Contraseña:</label>
+        <input type="password" id="password" name="password" placeholder="Nueva contraseña" required />
+      </div>
+
+      <!-- Campo para confirmar la nueva contraseña -->
+      <div class="form-group">
+        <label for="confirm-password">Repite la Contraseña:</label>
+        <input type="password" id="confirm-password" name="confirm_password" placeholder="Repite la contraseña"
+          required />
       </div>
 
       <!-- Botones de acción -->
       <div class="form-actions">
         <button type="submit">Guardar Cambios</button>
         <button type="button" onclick="window.history.back();">Cancelar</button>
-        <!-- Volver a la página anterior -->
       </div>
     </form>
   </section>
