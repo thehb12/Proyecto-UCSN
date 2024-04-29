@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin</title>
-    <link rel="stylesheet" href="../static/css/admin.css" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/admin.css') }}"
-    />
-  </head>
 
-  <body>
-    {% include 'menuadmin.html' %} {% include 'header.html' %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin</title>
+  <link rel="stylesheet" href="../static/css/admin.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}" />
+</head>
 
-    <script>
-      {% if mensaje %}
-      Swal.fire({
-          title: "{{ mensaje }}",
-          icon: "{{ icon }}"
-      });
-      {% endif %}
-    </script>
-  </body>
+<body>
+
+  {% include 'menuadmin.html' %}
+  <main>
+    {% include 'header.html' %}
+    <div class="menu-tablas">
+      <div class="cont-tabla">
+        <div class="main">
+          Hola
+
+        </div>
+      </div>
+      <div class="cont-tabla">
+        <div class="main">
+          Hola 2
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    {% if mensaje %}
+    Swal.fire({
+      title: "{{ mensaje }}",
+      icon: "{{ icon }}"
+    });
+    {% endif %}
+  </script>
+</body>
+
+
 </html>

@@ -12,14 +12,14 @@ mysql = MySQL(app)
 app.secret_key = 'tu_clave_secreta'
 
 
-@app.route('/')
+@app.route('/')     
 def index():
     if 'cargo' in session:
         cargo = session['cargo']
-        if cargo == 'admin':
-            return redirect(url_for('admin'))
+        if cargo == 'Admin':
+            return redirect('/admin')
         else:
-            return render_template('sesion.html')
+            return redirect('/sesion')
     return render_template('index.html')
 # @app.route('/')
 # def index():
@@ -92,22 +92,31 @@ def iniciar_sesion():
 
 @app.route('/admin')
 def admin():
-    if 'cargo' in session:
-        response = make_response(render_template('admin.html'))
-        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'  # Deshabilitar la caché
-        return response
+    if 'cargo'  in session :
+        cargo = session['cargo']
+        nombre_usuario = session.get('nombres')
+        if cargo == 'Admin':
+            response = make_response(render_template('admin.html', nombre_usuario=nombre_usuario))
+            response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'  # Deshabilitar la caché
+            return response
+        else:
+            return redirect('/')
     else:
-        return redirect(url_for('index'))
+        return redirect('/')
 
 @app.route('/sesion')
 def sesion():
     if 'cargo' in session:
-        response = make_response(render_template('sesion.html'))
-        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'  # Deshabilitar la caché
-        return response
+        cargo = session['cargo']
+        nombre_usuario = session.get('nombres')
+        if cargo != 'Admin':
+            response = make_response(render_template('sesion.html', nombre_usuario=nombre_usuario))
+            response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'  # Deshabilitar la caché
+            return response
+        else:
+            return redirect('/')
     else:
-        flash('Acceso no autorizado', 'error')
-        return redirect(url_for('index'))
+        return redirect('/')
 
 
 @app.route('/perfil')
