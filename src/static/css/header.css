@@ -72,13 +72,17 @@ header {
 
 .dropdown-menu {
   position: absolute;
-  top: 223%;
-  left: 0;
-  background-color: #fff;
+  top: 150%;
+  right: 0;
+  left: -10;
+  /* background-color: red; */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   display: none;
   width: 100%;
-  padding: 20px;
+  height: 17vh;
+  padding-top: 10%;
+  
+  /* padding: 20px; */
 }
 
 .dropdown-menu li {

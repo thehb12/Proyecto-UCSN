@@ -18,17 +18,26 @@
     <div class="menu-tablas">
       <div class="cont-tabla">
         <div class="main">
-          {% include 'certificado.html' %}
+
 
         </div>
       </div>
       <div class="cont-tabla">
         <div class="main">
-          Hola 2
+         
+
+          {% include 'mostrartrabajadores.html' %}
         </div>
       </div>
+      <div class="cont-tabla">
+        <div class="main">
+          {% include 'editar.html' %}
+        </div>
+      </div>
+
     </div>
   </main>
+
   <script>
     {% if mensaje %}
     Swal.fire({

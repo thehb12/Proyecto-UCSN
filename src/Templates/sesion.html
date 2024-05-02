@@ -13,8 +13,28 @@
   </head>
 
   <body>
-    {% include 'menupersonas.html' %} {% include 'header.html' %}
-    
+    {% include 'menupersonas.html' %}
+    <main>
+      {% include 'header.html' %}
+      <div class="menu-tablas">
+        <div class="cont-tabla">
+          <div class="main">
+           
+            
+          </div>
+        </div>
+        <div class="cont-tabla">
+          <div class="main">
+            {% include 'certificado.html' %}
+          </div>
+        </div>
+        <div class="cont-tabla">
+          <div class="main">
+            {% include 'editar.html' %}
+          </div>
+        </div>
+      </div>
+    </main>
     <script>
       {% if mensaje %}
       Swal.fire({

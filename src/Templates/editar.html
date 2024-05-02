@@ -1,42 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <title>Configuracion</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambiar Contraseña</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/editar.css') }}" />
-  <link rel="icon" href="../static/images/Recurso-1.ico">
 </head>
-{% include 'header.html' %}
-<div id="content">
-  <section class="profile-edit">
-    <h2>Información Personal</h2>
-    <form action="/update-profile" method="post" enctype="multipart/form-data">
-      <!-- Campo para la contraseña actual -->
-      <div class="form-group">
-        <label for="current-password">Contraseña Actual:</label>
-        <input type="password" id="current-password" name="current_password" placeholder="Ingrese su contraseña actual"
-          required />
-      </div>
 
-      <!-- Campo para la nueva contraseña -->
-      <div class="form-group">
-        <label for="password">Nueva Contraseña:</label>
-        <input type="password" id="password" name="password" placeholder="Nueva contraseña" required />
-      </div>
+<Body>
 
-      <!-- Campo para confirmar la nueva contraseña -->
-      <div class="form-group">
-        <label for="confirm-password">Repite la Contraseña:</label>
-        <input type="password" id="confirm-password" name="confirm_password" placeholder="Repite la contraseña"
-          required />
-      </div>
+  
+  <main>
+    
+    <div id="content">
+      <section class="profile-edit">
+        <h2>Información Personal</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+          <!-- Campo para la contraseña actual -->
+          <div class="form-group">
+            <label for="current-password">Contraseña Actual:</label>
+            <input type="password" id="current-password" name="current_password"
+              placeholder="Ingrese su contraseña actual" required />
+          </div>
 
-      <!-- Botones de acción -->
-      <div class="form-actions">
-        <button type="submit">Guardar Cambios</button>
-        <button type="button" onclick="window.history.back();">Cancelar</button>
-      </div>
-    </form>
-  </section>
-</div>
-<script src="{{ url_for('static', filename='js/desplegable.js') }}"></script>
-<footer>
-  <p>&copy; 2024 Unidad Clinica San Nicolas</p>
-</footer>
+          <!-- Campo para la nueva contraseña -->
+          <div class="form-group">
+            <label for="password">Nueva Contraseña:</label>
+            <input type="password" id="password" name="password" placeholder="Nueva contraseña" required />
+          </div>
+
+          <!-- Campo para confirmar la nueva contraseña -->
+          <div class="form-group">
+            <label for="confirm-password">Repite la Contraseña:</label>
+            <input type="password" id="confirm-password" name="confirm_password" placeholder="Repite la contraseña"
+              required />
+          </div>
+
+          <!-- Botones de acción -->
+          <div class="form-actions">
+            <button type="submit">Guardar Cambios</button>
+            <button type="button" onclick="window.history.back();">Cancelar</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+  
+</Body>
+
+</html>

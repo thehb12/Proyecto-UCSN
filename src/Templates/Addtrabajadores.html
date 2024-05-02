@@ -1,88 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="icon" href="../static/images/Recurso-1.ico">
-</head>
-
-<body>
-
-    <form action="/add_inmueble" method="POST" enctype="multipart/form-data">
-        <h2>Registrar Personal</h2>
-        <label>Agregar información:</label>
-        <input type="file" name="Foto" accept="image*" multiple />
-
-        <div class="form-container">
-            <!-- Sección izquierda -->
-            <div class="form-section">
-                <label>Nombres:</label>
-                <textarea name="Descripcion" placeholder="Ingresa el nombres completo"></textarea>
-
-                <label>Tipo de ID:</label>
-                <select name="Tipo" id="">
-                    <option value="">Seleccionar</option>
-                    <option value="CC">Cédula</option>
-                    <option value="CE">Cédula extranjera</option>
-                    <option value="CC DIG">Cédula digital</option>
-                    <option value="TI">Tarjeta de identidad</option>
-                    <option value="PPT">Permiso por Protección Temporal</option>
-                </select>
-
-                <label>Numero de ID:</label>
-                <input type="text" name="Numero de ID" placeholder="Ingresa tu número de documento"
-                    onkeypress="validarSoloNumeros(event)" />
-
-                <!-- Campo para letras -->
-                <label>Lugar de expedición del documento:</label>
-                <input type="text" name="Lugar de expedición" placeholder="Ingresa el lugar de expedición"
-                    onkeypress="validarSoloLetras(event)" />
-
-                <label>cargo:</label>
-                <input type="number" name="Banos" placeholder="Ingresa el número de baños" />
-            </div>
-
-            <!-- Sección derecha -->
-            <div class="form-section">
-                <label>correo:</label>
-                <select name="Patio" id="">
-                    <option value="">Seleccionar</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                </select>
-
-                <label>Fecha de inicio de contrato:</label>
-                <select name="Garaje" id="">
-                    <option value="">Seleccionar</option>
-                    <option value="Si">Si</option>
-                    <option value="No">No</option>
-                </select>
-
-                <label>Fecha de inicio de finalizacion del contrato:</label>
-                <input type="number" name="Precio" placeholder="Ingresa el precio" />
-
-                <label>Saldo:</label>
-                <input type="text" list="opciones" name="Arrendador" id="ArrendadorInput" oninput="filtrarOpciones()"
-                    onchange="seleccionarOpcion()">
-                <label>Auxilio de transporte:</label>
-                <select name="Servicio" id="">
-                    <option value="">Seleccionar</option>
-                    <option value="Arriendo">Arriendo</option>
-                    <option value="Venta">Venta</option>
-                    <label>Contraseña:</label>
-                    <input type="text" name="Numero de ID" placeholder="Ingresa tu número de documento"
-                        onkeypress="validarSoloNumeros(event)" />
-                    <label>Estado:</label>
-                    <input type="text" name="Numero de ID" placeholder="Ingresa tu número de documento"
-                        onkeypress="validarSoloNumeros(event)" />
-                </select>
-            </div>
-        </div>
-        <div class="button-group">
-            <button type="submit">Agregar</button>
-        </div>
-    </form>
-</body>
-
-</html>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+  <p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form action="/add_trabajadores" method="POST">
+    <input type="text" name="nombres" placeholder="nombres">
+    <input type="text" name="tipo_de_id"placeholder=" tipo_de_id">
+    <input type="number" name="numero_de_id"placeholder="numero_de_id">
+    <input type="text" name="lugar_expedicion"placeholder=" lugar_expedicion">
+    <input type="text" name="cargo"placeholder="cargo">
+    <input type="text" name="correo"placeholder="correo">
+    <input type="number" name="fecha_inicial "placeholder="fecha_inicial">
+    <input type="number" name="fecha_final "placeholder="fecha_final">
+    <input type="number" name="saldo"placeholder="saldo">
+    <input type="number" name="auxt"placeholder="auxt">
+    <input type="text" name="estado"placeholder="estado">
+    <button type="submit">Guardar</button>
+</form>

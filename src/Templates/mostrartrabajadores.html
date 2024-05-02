@@ -1,0 +1,107 @@
+<style>
+    #tablajus {
+        /* background-color: blue; */
+        /* border: 1px solid black; */
+        width: 90%;
+        height: 85%;
+        /* max-height: 85vh; */
+        /* Establece el alto máximo del filtro */
+        overflow-y: hidden;
+        /* Agrega una barra de desplazamiento vertical si el contenido excede el alto máximo */
+    }
+
+    table {
+        /* background-color: red; */
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    td {
+        border: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f0f0f0;
+    }
+</style>
+<div id="tablajus">
+    <!--  -->
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+    <!-- JavaScript de jQuery (necesario para DataTables) -->
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <!-- JavaScript de DataTables -->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (!$.fn.DataTable.isDataTable('#miTabla')) {
+                $('#miTabla').DataTable({
+                    "language": {
+                        "url": "https://cdn.datatables.net/plug-ins/1.10.22/i18n/Spanish.json"
+                    },
+                    "language": {
+                        "lengthMenu": "Mostrar _MENU_ registros por página",
+                        "zeroRecords": "No se encontraron registros",
+                        "info": "Mostrando página _PAGE_ de _PAGES_",
+                        "infoEmpty": "No hay registros disponibles",
+                        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                        "search": "Buscar:",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Último",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        },
+                    },
+                    "paging": true, // Activar paginación
+                    "searching": true, // Desactivar la barra de búsqueda
+                    "lengthChange": false, // Ocultar la opción de cambiar el número de filas por página
+                    "info": false, // Ocultar la información del estado de la paginación
+                    "scrollY": "calc(80vh - 200px)", // Fijar la altura del área de desplazamiento
+                    "pagingType": "full_numbers" // Mostrar todas las paginaciones disponibles
+                });
+            }
+        });
+    </script>
+
+    <table id="miTabla">
+        <thead>
+            <tr>
+                <th>Tipo ID</th>
+                <th>Número ID</th>
+                <th>Nombres</th>
+                <th>Cargo</th>
+                <th>Correo</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[7] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
