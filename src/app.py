@@ -1,4 +1,3 @@
-import re
 from flask import Flask, jsonify, render_template, request, redirect, url_for, session, flash, make_response
 from flask_mysqldb import MySQL
 from config import Config
@@ -162,6 +161,7 @@ def add_trabajadores():
         flash('Trabajador agregado con exito')
         
         return redirect(url_for('Addtrabajadores'))
+    
         
 
 
