@@ -1,0 +1,252 @@
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<link rel="stylesheet" href="path/to/your/css/styles.css">
+<style>
+    /* Importar la fuente Poppins */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+    /* Ajustes para las secciones */
+    /* #informacion,
+    #descripcion {
+        justify-content: center;
+        align-items: center;
+    } */
+    .information {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 90%;
+        padding: 1%;
+        display: flex;
+        /* background-color: rgb(82, 215, 238); */
+    }
+
+    #informacion {
+        /* margin: 2% auto; */
+        /* margin-top: -15%; */
+        width: 25%;
+        height: 90%;
+        background-color: #f0f0f052;
+        border-radius: 10px;
+        padding: 20px;
+        /* margin-top: 1px; */
+        margin-right: 1%;
+        overflow: auto;
+    }
+
+    #descripcion {
+        /* margin: 2% auto; */
+        /* zoom: 90%; */
+        width: 70%;
+        height: 90%;
+        overflow: auto;
+        /* Hacer más ancha la sección de descripción */
+        /* margin: 10% auto; */
+        /* Centrar y crear márgenes uniformes */
+        padding: 20px;
+        /* Añadir padding para espacio interno */
+        background-color: #f0f0f0;
+        /* Añadir un color de fondo suave */
+        border-radius: 10px;
+        /* Bordes redondeados para un mejor diseño */
+        /* margin-top: 20%; */
+        /* margin-right: 10%; */
+    }
+
+    #icon {
+        font-size: 24px;
+        /* Tamaño de los iconos */
+        color: #3cb3c3;
+        ;
+        /* Color azul */
+        /* margin-right: 10px; */
+        /* Espacio entre icono y texto */
+    }
+
+    .ims {
+        /* background-color: red; */
+        color: black;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+    }
+    #informacion a:hover{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        zoom: 110%;
+        background-color: #ece5e5cc;
+    }
+    /* Estilo para el modal */
+    .modal {
+        display: none;
+
+        justify-content: center;
+        align-items: center;
+        /* Por defecto oculto */
+        position: fixed;
+        /* Fijo en la pantalla */
+        z-index: 9999;
+        /* Por encima de otros elementos */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        /* Evita que se hagan clics en el modal */
+    }
+
+    /* Contenido del modal */
+    .modal-content {
+
+        background-color: #fefefe;
+        /* margin: 15% auto; */
+        /* Centrado vertical y horizontal */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        height: 40%;
+        /* Ancho del modal */
+        pointer-events: auto;
+        /* Permitir clics dentro del modal */
+    }
+    .close{
+        display: flex;
+        justify-content: right;
+        width: 98%;
+        /* background-color: red; */
+        /* padding-right: 5%; */
+        /* right: 15%; */
+    }
+    /* Fondo oscuro semi-transparente */
+    #modalBackdrop {
+
+        display: none;
+        position: fixed;
+        z-index: 9998;
+        /* Por debajo del modal */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+    h1, h2{
+        font-weight: 600;
+    }
+</style>
+</head>
+<div class="information">
+    <section id="informacion">
+        <h1>Bienvenido a la Plataforma de Administración</h1>
+        <p>
+            Aquí puedes administrar a los trabajadores, ver listados y llevar a cabo otras tareas de gestión.
+        </p>
+        <p>
+            A continuación, encontrarás videos explicativos sobre cómo utilizar las principales funcionalidades de la
+            página y una descripción de los botones y tablas.
+
+        </p>
+        <p>
+            Informacion del Sotware y Desarrollador:
+
+        </p>
+        <div class="ims">
+            <img style=" height: 50px;" src="{{ url_for('static', filename='images/Recurso 1.png') }}" alt="">
+            <span style="padding-left: 3%;">Software Web U C S N</span>
+
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <!-- Aquí va tu contenido -->
+                <span class="close">&times;</span>
+                <p>Contenido del modal...</p>
+            </div>
+        </div>
+        <div id="modalBackdrop"></div>
+
+        <!-- Este es el enlace que activa el modal -->
+        <a href="#" class="ims" onclick="mostrarModal()">
+            <img style="height: 50px; cursor: pointer;" src="{{ url_for('static', filename='images/ADSOFINAL2.png') }}"
+                alt="">
+            <span>Julian Hernandez</span>
+        </a>
+        <script>
+            // Función para mostrar el modal
+            function mostrarModal() {
+                var modal = document.getElementById("myModal");
+                var backdrop = document.getElementById("modalBackdrop");
+                modal.style.display = "flex";
+                backdrop.style.display = "block";
+            }
+
+            // Función para cerrar el modal
+            function cerrarModal() {
+                var modal = document.getElementById("myModal");
+                var backdrop = document.getElementById("modalBackdrop");
+                modal.style.display = "none";
+                backdrop.style.display = "none";
+            }
+
+            // Event listener para cerrar el modal haciendo clic en el área de fondo
+            var backdrop = document.getElementById("modalBackdrop");
+            backdrop.addEventListener("click", function (event) {
+                if (event.target === backdrop) {
+                    cerrarModal();
+                }
+            });
+
+            // Event listener para cerrar el modal haciendo clic en el botón de cerrar
+            var closeBtn = document.getElementsByClassName("close")[0];
+            closeBtn.onclick = cerrarModal;
+
+        </script>
+    </section>
+
+    <section id="descripcion">
+        <h2>Descripción de Botones y Tablas</h2>
+        <h3>Botones Principales</h3>
+        <ul>
+            <li>
+                <span id="icon"><ion-icon name="home-outline"></ion-icon></span>
+                <strong>Home:</strong> Inicio, muestra como es la navegacion de la pagina administrador y usuario
+            </li>
+            <li>
+                <span id="icon"><ion-icon name="people-outline"></ion-icon></span>
+                <strong>Agregar Trabajador:</strong> Permite agregar un nuevo trabajador a la base de datos.
+            </li>
+            <li>
+                <span id="icon"><ion-icon name="people-outline"></ion-icon></span>
+                <strong>Ver Personal:</strong> Muestra el listado de todos los trabajadores.
+            </li>
+            <li>
+                <span id="icon"><ion-icon name="people-outline"></ion-icon></span>
+                <strong>Editar Trabajador:</strong> Permite editar la información de un trabajador existente.
+            </li>
+            <li>
+                <span id="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <strong>Cambio de Contraseña</strong> Permite al usuaario cambiar su Contraseña
+            </li>
+            <li>
+                <span id="icon"><ion-icon name="trash-outline"></ion-icon></span>
+                <strong>Eliminar Trabajador:</strong> Permite eliminar un trabajador de la base de datos.
+            </li>
+        </ul>
+
+        <h3>Tablas Clave</h3>
+        <p>
+            La tabla principal de trabajadores muestra los siguientes campos: ID, nombres, tipo de id, número de id,
+            lugar, cargo, correo, fecha inicial, fecha final, saldo, auxilio y estado del trabajador (activo o
+            inactivo).
+            Puedes ordenar la tabla haciendo clic en los encabezados y utilizar la función de búsqueda para encontrar
+            trabajadores específicos.
+        </p>
+    </section>
+</div>
