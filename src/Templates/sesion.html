@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bienvenido</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/usuario.css') }}"
-    />
-    <link rel="stylesheet" href="../static/css/usuario.css">
-    <link rel="icon" href="../static/images/Recurso-1.ico">
-  </head>
 
-  <body>
-    {% include 'menupersonas.html' %}
-    <main>
-      {% include 'header.html' %}
-      <div class="menu-tablas">
-        <div class="cont-tabla">
-          <div class="main">
-           
-            
-          </div>
-        </div>
-        <div class="cont-tabla">
-          <div class="main">
-            {% include 'certificado.html' %}
-          </div>
-        </div>
-        <div class="cont-tabla">
-          <div class="main">
-            {% include 'editar.html' %}
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenido</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/usuario.css') }}" />
+  <link rel="stylesheet" href="../static/css/usuario.css">
+  <link rel="icon" href="../static/images/Recurso-1.ico">
+</head>
+
+<body>
+  {% include 'menupersonas.html' %}
+  <main>
+    {% include 'header.html' %}
+    <div class="menu-tablas">
+      <div class="cont-tabla">
+        <div class="main">
+
+          {% include 'contenidousers.html' %}
         </div>
       </div>
-    </main>
-    <script>
-      {% if mensaje %}
-      Swal.fire({
-          title: "{{ mensaje }}",
-          icon: "{{ icon }}"
-      });
-      {% endif %}
-    </script>
-  </body>
+      <div class="cont-tabla">
+        <div class="main">
+          {% include 'certificado.html' %}
+        </div>
+      </div>
+      <div class="cont-tabla">
+        <div class="main">
+          {% include 'editar.html' %}
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    {% if mensaje %}
+    Swal.fire({
+      title: "{{ mensaje }}",
+      icon: "{{ icon }}"
+    });
+    {% endif %}
+  </script>
+</body>
+
 </html>
