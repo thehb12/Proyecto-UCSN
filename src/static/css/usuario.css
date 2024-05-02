@@ -20,25 +20,19 @@ body {
 }
 
 main {
-    /* background-color: blue; */
     width: 100%;
     height: 100%;
-    /* display: flex; */
 }
 .menu-tablas{
     width: 100%;
     height: 90%;
-    /* background-color: red; */
 }
 .cont-tabla {
     display: none;
     width: 100%;
     height: 100%;
-    /* background-color: yellow; */
-    /* border: 1px solid black; */
 }
 .main{
-    /* background-color: yellow; */
     width: 100%;
     height: 100%;
     align-items: center;
