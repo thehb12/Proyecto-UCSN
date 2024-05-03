@@ -8,15 +8,24 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/editar.css') }}" />
 </head>
 
-<Body>
+<body>
+  <!-- Sección para mensajes flash -->
+  {% with messages = get_flashed_messages(with_categories=True) %}
+  {% if messages %}
+  <div class="flash-messages">
+    {% for category, message in messages %}
+    <div class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
 
-  
   <main>
-    
     <div id="content">
       <section class="profile-edit">
         <h2>Información Personal</h2>
-        <form action="" method="post" enctype="multipart/form-data">
+        <!-- Modificar el action para que envíe a la ruta de cambio de contraseña -->
+        <form action="{{ url_for('change_password') }}" method="post">
           <!-- Campo para la contraseña actual -->
           <div class="form-group">
             <label for="current-password">Contraseña Actual:</label>
@@ -46,7 +55,6 @@
       </section>
     </div>
   </main>
-  
-</Body>
+</body>
 
 </html>
