@@ -2,11 +2,11 @@
     #tablajus {
         width: 90%;
         height: 85%;
-        overflow-y: hidden;
+        overflow-y: auto;
     }
 
     table {
-        
+
         width: 100%;
         border-collapse: collapse;
     }
@@ -31,57 +31,18 @@
 <div id="tablajus">
     <!--  -->
     <!--  -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
 
-    <!-- JavaScript de jQuery (necesario para DataTables) -->
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
-    <!-- JavaScript de DataTables -->
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            if (!$.fn.DataTable.isDataTable('#miTabla')) {
-                $('#miTabla').DataTable({
-                    "language": {
-                        "url": "https://cdn.datatables.net/plug-ins/1.10.22/i18n/Spanish.json"
-                    },
-                    "language": {
-                        "lengthMenu": "Mostrar _MENU_ registros por página",
-                        "zeroRecords": "No se encontraron registros",
-                        "info": "Mostrando página _PAGE_ de _PAGES_",
-                        "infoEmpty": "No hay registros disponibles",
-                        "infoFiltered": "(filtrado de _MAX_ registros totales)",
-                        "search": "Buscar:",
-                        "paginate": {
-                            "first": "Primero",
-                            "last": "Último",
-                            "next": "Siguiente",
-                            "previous": "Anterior"
-                        },
-                    },
-                    "paging": true, // Activar paginación
-                    "searching": true, // Desactivar la barra de búsqueda
-                    "lengthChange": false, // Ocultar la opción de cambiar el número de filas por página
-                    "info": false, // Ocultar la información del estado de la paginación
-                    "scrollY": "calc(80vh - 200px)", // Fijar la altura del área de desplazamiento
-                    "pagingType": "full_numbers" // Mostrar todas las paginaciones disponibles
-                });
-            }
-        });
-    </script>
-
-    <table id="miTabla">
+    <table id="miTabla" class="table table-striped">
         <thead>
             <tr>
-                <th>Tipo ID</th>
-                <th>Número ID</th>
-                <th>Nombres</th>
-                <th>Cargo</th>
-                <th>Correo</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Fin</th>
-                <th>Estado</th>
+                <th data-filter-control="input">Tipo ID</th>
+                <th data-filter-control="input">Número ID</th>
+                <th data-filter-control="input">Nombres</th>
+                <th data-filter-control="input">Cargo</th>
+                <th data-filter-control="input">Correo</th>
+                <th data-filter-control="input">Fecha Inicio</th>
+                <th data-filter-control="input">Fecha Fin</th>
+                <th data-filter-control="input">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -99,4 +60,59 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.18.3/bootstrap-table.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.18.3/locale/bootstrap-table-es-ES.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#miTabla').bootstrapTable({
+                search: true,
+                filterControl: true,
+                pagination: true,
+                pageSize: 10,
+                filterControlsLocale: {
+                    searchPlaceholder: 'Buscar',
+                    applyFilterText: 'Aplicar',
+                    cancelFilterText: 'Cancelar'
+                },
+                columns: [{
+                    field: 'tipo_id',
+                    title: 'Tipo ID'
+                }, {
+                    field: 'numero_id',
+                    title: 'Número ID'
+                }, {
+                    field: 'nombres',
+                    title: 'Nombres'
+                }, {
+                    field: 'cargo',
+                    title: 'Cargo'
+                }, {
+                    field: 'correo',
+                    title: 'Correo'
+                }, {
+                    field: 'fecha_inicio',
+                    title: 'Fecha Inicio'
+                }, {
+                    field: 'fecha_fin',
+                    title: 'Fecha Fin'
+                }, {
+                    field: 'estado',
+                    title: 'Estado'
+                }]
+            });
+        });
+    </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.18.3/bootstrap-table.min.css">
+    <style>
+        .bold-blue {
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
 </div>
