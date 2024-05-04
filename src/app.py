@@ -184,15 +184,14 @@ def cambiopassword():
                 cur.close()
                 mensaje = "Contraseña cambiada con éxito"  
                 icon = "success"
-                return render_template('admin.html', mensaje=mensaje, icon=icon)
             except Exception as e: 
                 mensaje = f"Error al actualizar la contraseña: {e}"  
                 icon = "error"
-                return render_template('admin.html', mensaje=mensaje, icon=icon)
         else:
             mensaje = "La contraseña actual no coincide"  
             icon = "error"
-            return render_template('admin.html', mensaje=mensaje, icon=icon)
+        
+        return render_template('admin.html', mensaje=mensaje, icon=icon)
     return redirect('/')
             
  

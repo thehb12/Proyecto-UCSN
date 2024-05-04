@@ -17,19 +17,12 @@
       <section class="profile-edit">
         <h2>Información Personal</h2>
         <!-- Modificar el action para que envíe a la ruta de cambio de contraseña -->
+        <!-- En la sección head de tu plantilla HTML -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-          {% if mensaje %}
-          Swal.fire({
-            title: "{{ mensaje }}",
-            icon: "{{ icon }}"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = "/";
-            }
-          });
-          {% endif %}
-        </script>
+        <script src="{{ url_for('static', filename='sweet_alert.js') }}"></script>
+
+
+
 
 
         <form action="/cambiopassword" method="POST" onsubmit="return validarContraseña()">
@@ -79,6 +72,24 @@
         }
         return true;
       }
+      // sweet_alert.js
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const mensaje = "{{ mensaje }}";
+        const icon = "{{ icon }}";
+
+        if (mensaje) {
+          Swal.fire({
+            title: mensaje,
+            icon: icon
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = "/";
+            }
+          });
+        }
+      });
+
     </script>
   </main>
 </body>
