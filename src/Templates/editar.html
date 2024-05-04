@@ -25,31 +25,30 @@
       <section class="profile-edit">
         <h2>Información Personal</h2>
         <!-- Modificar el action para que envíe a la ruta de cambio de contraseña -->
-        <form action="{{ url_for('change_password') }}" method="post">
+        <form action="/cambiopassword" method="POST">
           <!-- Campo para la contraseña actual -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="current-password">Contraseña Actual:</label>
             <input type="password" id="current-password" name="current_password"
               placeholder="Ingrese su contraseña actual" required />
-          </div>
+          </div> -->
 
-          <!-- Campo para la nueva contraseña -->
           <div class="form-group">
             <label for="password">Nueva Contraseña:</label>
-            <input type="password" id="password" name="password" placeholder="Nueva contraseña" required />
+            <input type="password" id="password" name="new_password" placeholder="Nueva contraseña" required />
           </div>
 
           <!-- Campo para confirmar la nueva contraseña -->
           <div class="form-group">
-            <label for="confirm-password">Repite la Contraseña:</label>
-            <input type="password" id="confirm-password" name="confirm_password" placeholder="Repite la contraseña"
+            <label for="confirmpassword">Repite la Contraseña:</label>
+            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Repite la contraseña"
               required />
           </div>
 
           <!-- Botones de acción -->
           <div class="form-actions">
             <button type="submit">Guardar Cambios</button>
-            <button type="button" onclick="window.history.back();">Cancelar</button>
+            <button type="button">Cancelar</button>
           </div>
         </form>
       </section>

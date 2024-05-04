@@ -163,53 +163,32 @@ def add_trabajadores():
         
         return redirect(url_for('Addtrabajadores'))
     
-@app.route('/change_password', methods=['GET', 'POST'])
-def change_password():
-    # Verificar si la sesión contiene el correo electrónico
-    if 'correo' not in session:
-        flash("Debe iniciar sesión para cambiar su contraseña.", "error")
-        return redirect(url_for('index'))
-
-    user_email = session.get('correo')  # Obtener el correo de la sesión
-
+@app.route('/cambiopassword', methods=['POST'])
+def cambiopassword():
     if request.method == 'POST':
-        # Obtener los datos del formulario
-        current_password = request.form['current_password']
-        new_password = request.form['password']
-        confirm_password = request.form['confirm_password']
-
-        if new_password != confirm_password:
+        id_usuario = session.get('numero_id')
+        contrasena_nueva = request.form['password']
+        confirmar_contrasena_nueva = request.form['confirmpassword']
+        hashed_password = hashlib.sha256(contrasena_nueva.encode()).hexdigest()
+        
+        print(id_usuario)
+        
+        if contrasena_nueva != confirmar_contrasena_nueva:
             flash("Las nuevas contraseñas no coinciden.", "error")
-            return render_template('editar.html')
+            print("diferentes")
+            return redirect('/')
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute("UPDATE personalucsn SET contraseña_hash = %s WHERE id_usuario = %s", (hashed_password, id_usuario))
+            mysql.connection.commit()
+            print("password cambiada")
+            cur.close()
+        except Exception as e: 
+            flash(f'Error al actualizar la contraseña: {e}', 'error')
+            mysql.connection.rollback()
+        return redirect('/')
 
-        # Conexión a la base de datos
-        conn = mysql.connection
-        cursor = conn.cursor()
-
-        # Buscar al usuario por correo electrónico
-        cursor.execute("SELECT contraseña_hash FROM personalucsn WHERE correo = %s", (user_email,))
-        user_data = cursor.fetchone()
-
-        if not user_data:
-            flash("Usuario no encontrado.", "error")
-            return render_template('editar.html')
-
-        # Comprobar si la contraseña actual es correcta
-        if not check_password_hash(user_data[0], current_password):
-            flash("Contraseña actual incorrecta.", "error")
-            return render_template('editar.html')
-
-        # Generar el hash de la nueva contraseña y actualizar
-        new_hashed_password = generate_password_hash(new_password)
-        cursor.execute("UPDATE personalucsn SET contraseña_hash = %s WHERE correo = %s", (new_hashed_password, user_email))
-        conn.commit()
-
-        flash("Contraseña cambiada con éxito.", "success")
-        return redirect(url_for('index'))
-
-    return render_template('editar.html')
-
-
+            
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
