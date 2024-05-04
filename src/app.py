@@ -14,7 +14,7 @@ app.secret_key = 'tu_clave_secreta'
 
 
 @app.route('/')     
-def index():
+def index():    
     if 'cargo' in session:
         cargo = session['cargo']
         if cargo == 'Admin':
@@ -44,6 +44,7 @@ def iniciar_sesion():
         cargo = usuario[5]
         fecha_inicio = usuario[7]
         correo = usuario[0]
+        password = usuario[11]
     
 
         session['numero_id'] = numero_id_usuario
@@ -51,6 +52,7 @@ def iniciar_sesion():
         session['fecha_inicio'] = fecha_inicio
         session['cargo'] = cargo
         session['correo'] = correo
+        session['password'] = password
         
         if cargo == 'Admin':
             return redirect(url_for('admin'))
@@ -166,27 +168,36 @@ def add_trabajadores():
 @app.route('/cambiopassword', methods=['POST'])
 def cambiopassword():
     if request.method == 'POST':
+        mensaje = ""  
+        icon = ""
         id_usuario = session.get('numero_id')
         contrasena_nueva = request.form['password']
-        confirmar_contrasena_nueva = request.form['confirmpassword']
+        contrasena_actual = request.form['current_password']
+        password_actual = hashlib.sha256(contrasena_actual.encode()).hexdigest()
+        
         hashed_password = hashlib.sha256(contrasena_nueva.encode()).hexdigest()
+        if password_actual == session['password']:
+            try:
+                cur = mysql.connection.cursor()
+                cur.execute("UPDATE personalucsn SET contraseña_hash = %s WHERE numero_id= %s", (hashed_password, id_usuario))
+                mysql.connection.commit()
+                cur.close()
+                mensaje = "Contraseña cambiada con éxito"  
+                icon = "success"
+                return render_template('admin.html', mensaje=mensaje, icon=icon)
+            except Exception as e: 
+                mensaje = f"Error al actualizar la contraseña: {e}"  
+                icon = "error"
+                return render_template('admin.html', mensaje=mensaje, icon=icon)
+        else:
+            mensaje = "La contraseña actual no coincide"  
+            icon = "error"
+            return render_template('admin.html', mensaje=mensaje, icon=icon)
+    return redirect('/')
+            
+ 
         
-        print(id_usuario)
         
-        if contrasena_nueva != confirmar_contrasena_nueva:
-            flash("Las nuevas contraseñas no coinciden.", "error")
-            print("diferentes")
-            return redirect('/')
-        try:
-            cur = mysql.connection.cursor()
-            cur.execute("UPDATE personalucsn SET contraseña_hash = %s WHERE id_usuario = %s", (hashed_password, id_usuario))
-            mysql.connection.commit()
-            print("password cambiada")
-            cur.close()
-        except Exception as e: 
-            flash(f'Error al actualizar la contraseña: {e}', 'error')
-            mysql.connection.rollback()
-        return redirect('/')
 
             
 

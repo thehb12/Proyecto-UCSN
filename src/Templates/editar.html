@@ -6,53 +6,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cambiar Contraseña</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/editar.css') }}" />
+
 </head>
 
 <body>
-  <!-- Sección para mensajes flash -->
-  {% with messages = get_flashed_messages(with_categories=True) %}
-  {% if messages %}
-  <div class="flash-messages">
-    {% for category, message in messages %}
-    <div class="{{ category }}">{{ message }}</div>
-    {% endfor %}
-  </div>
-  {% endif %}
-  {% endwith %}
+
 
   <main>
     <div id="content">
       <section class="profile-edit">
         <h2>Información Personal</h2>
         <!-- Modificar el action para que envíe a la ruta de cambio de contraseña -->
-        <form action="/cambiopassword" method="POST">
-          <!-- Campo para la contraseña actual -->
-          <!-- <div class="form-group">
-            <label for="current-password">Contraseña Actual:</label>
-            <input type="password" id="current-password" name="current_password"
-              placeholder="Ingrese su contraseña actual" required />
-          </div> -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+          {% if mensaje %}
+          Swal.fire({
+            title: "{{ mensaje }}",
+            icon: "{{ icon }}"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = "/";
+            }
+          });
+          {% endif %}
+        </script>
 
+
+        <form action="/cambiopassword" method="POST" onsubmit="return validarContraseña()">
+          <!-- Campo para el ID de usuario -->
+          <div class="form-group">
+            <label for="password">Ingrese la contraseña actual</label>
+            <input type="password" id="current_password" name="current_password"
+              placeholder="Ingrese la contraseña actual" required />
+          </div>
+          <!-- Campo para la nueva contraseña -->
           <div class="form-group">
             <label for="password">Nueva Contraseña:</label>
-            <input type="password" id="password" name="new_password" placeholder="Nueva contraseña" required />
+            <input type="password" id="password" name="password" placeholder="Nueva contraseña" required />
           </div>
 
           <!-- Campo para confirmar la nueva contraseña -->
           <div class="form-group">
-            <label for="confirmpassword">Repite la Contraseña:</label>
-            <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Repite la contraseña"
+            <label for="confirmpassword">Confirmar contraseña:</label>
+            <input type="password" id="confirmpassword" name="confirm_password" placeholder="Confirmar contraseña"
               required />
           </div>
 
           <!-- Botones de acción -->
           <div class="form-actions">
             <button type="submit">Guardar Cambios</button>
-            <button type="button">Cancelar</button>
+            <!-- <button type="button" onclick="window.history.back();">Cancelar</button> -->
           </div>
         </form>
       </section>
     </div>
+    <script>
+      function validarContraseña() {
+        var nuevaContraseña = document.getElementById("password").value;
+        var confirmarContraseña = document.getElementById("confirmpassword").value;
+
+        if (nuevaContraseña != confirmarContraseña) {
+          swal.fire({
+            title: "Las contraseñas no coinciden",
+            text: "",
+            icon: "error"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = "/";
+            }
+          });
+          return false;
+        }
+        return true;
+      }
+    </script>
   </main>
 </body>
 
