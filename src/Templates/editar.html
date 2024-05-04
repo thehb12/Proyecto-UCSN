@@ -10,7 +10,40 @@
 </head>
 
 <body>
+  <script>
+    function validarContraseña() {
+      var nuevaContraseña = document.getElementById("password").value;
+      var confirmarContraseña = document.getElementById("confirmpassword").value;
 
+      if (nuevaContraseña != confirmarContraseña) {
+        swal.fire({
+          title: "Las contraseñas no coinciden",
+          text: "",
+          icon: "error"
+        });
+        return false;
+      }
+      return true;
+    }
+    // sweet_alert.js
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const mensaje = "{{ mensaje }}";
+      const icon = "{{ icon }}";
+
+      if (mensaje) {
+        Swal.fire({
+          title: mensaje,
+          icon: icon
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = "/";
+          }
+        });
+      }
+    });
+
+  </script>
 
   <main>
     <div id="content">
@@ -53,44 +86,7 @@
         </form>
       </section>
     </div>
-    <script>
-      function validarContraseña() {
-        var nuevaContraseña = document.getElementById("password").value;
-        var confirmarContraseña = document.getElementById("confirmpassword").value;
 
-        if (nuevaContraseña != confirmarContraseña) {
-          swal.fire({
-            title: "Las contraseñas no coinciden",
-            text: "",
-            icon: "error"
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = "/";
-            }
-          });
-          return false;
-        }
-        return true;
-      }
-      // sweet_alert.js
-
-      document.addEventListener('DOMContentLoaded', function () {
-        const mensaje = "{{ mensaje }}";
-        const icon = "{{ icon }}";
-
-        if (mensaje) {
-          Swal.fire({
-            title: mensaje,
-            icon: icon
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location.href = "/";
-            }
-          });
-        }
-      });
-
-    </script>
   </main>
 </body>
 
