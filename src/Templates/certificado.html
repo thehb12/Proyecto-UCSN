@@ -1,28 +1,70 @@
-<meta charset="UTF-8" />
-
 <style>
     .certificado {
-        /* box-sizing: border-box; */
         font-family: Arial;
         font-size: 12px;
         font-weight: 100;
+        width: 90%;
+        overflow: auto;
     }
 
     .uppercase {
         text-transform: uppercase;
     }
 
+    body {
+
+        margin: 0;
+        padding: 0;
+    }
+
+    .certificado {
+        /* width: 50%; */
+        margin: 50px;
+        /* Ajustar según el margen deseado */
+    }
+
+    .margins {
+        /* border: 0.5px solid black; */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: auto;
+        /* overflow-x: none; */
+        width: 50%;
+        height: 90%;
+        padding: 2%;
+        /* background-color: red; */
+    }
+
+    .botonpdf {
+        width: 20%;
+        display: flex;
+        top: 15%;
+        right: -2%;
+        position: absolute;
+    }
+    .botonpdf2 {
+        width: 20%;
+        display: flex;
+        top: 25%;
+        right: -2%;
+        position: absolute;
+    }
+    .botonpdf3 {
+        width: 20%;
+        display: flex;
+        top: 35%;
+        right: -2%;
+        position: absolute;
+    }
+    /* 
     p {
         margin: 0.5em 0;
-    }
+    } */
 </style>
 <!-- <button class="certificado"> Seleccione el tipo de certidicado </button> -->
+<div class="margins">
+    <div class="certificado" id="certificado">
 
-<body>
 
-
-    <div class="certificado">
-        
         <p style="text-align: center;"><strong>UNIDAD CLINICA SAN NICOLAS LTDA.</strong></p>
         <p style="text-align: center;">Calle 52 No 17-85 Tel: 6225895-3187765427</p>
         <p style="text-align: center;">Barrancabermeja – Santander</p>
@@ -30,9 +72,10 @@
         <p style="text-align: center;">&nbsp;</p>
         <p style="text-align: center;"><strong>CERTIFICACIÓN</strong></p>
         <p style="text-align: center;">&nbsp;</p>
-        <p>La Unidad Cl&iacute;nica San Nicol&aacute;s Ltda., certifica que el se&ntilde;or <strong><span
-                    class="uppercase">{{nombre_usuario}}</span></strong> identificado con {{ 'Cedula de Ciudadania' if datos_usuario[1] == 'CC' else datos_usuario[1] }}
-                    n&uacute;mero {{datos_usuario[2]}} de {{datos_usuario[3]}}, labora en esta
+        <p>La Unidad Cl&iacute;nica San Nicol&aacute;s Ltda., certifica que el se&ntilde;or@ <strong><span
+                    class="uppercase">{{nombre_usuario}}</span></strong> identificad@ con {{ 'Cedula de Ciudadania' if
+            datos_usuario[1] == 'CC' else datos_usuario[1] }}
+            n&uacute;mero {{datos_usuario[2]}} de {{datos_usuario[3]}}, labora en esta
             instituci&oacute;n
             desempe&ntilde;ando el cargo de <strong>{{datos_usuario[4]}}.</strong></p>
         <p>Ejecuta a la fecha, labores propias de su cargo, mediante contrato laboral a t&eacute;rmino fijo, desde el
@@ -49,6 +92,23 @@
         <p>&nbsp;</p>
         <p style="text-align: center;"><strong>EUNICE ANGARITA GALVIS</strong></p>
         <p style="text-align: center;">Representante Legal Suplente.</p>
-        
+
     </div>
-</body>
+
+
+</div>
+<script>
+    function generarPDF() {
+        const element = document.getElementById('certificado');
+        html2pdf()
+            .from(element)
+            .set({
+                margin: [50, 30, 10, 40], // top, right, bottom, left
+                filename: 'certificado.pdf',
+                pagebreak: { mode: 'avoid-all' },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' }
+            })
+            .save();
+    }
+</script>

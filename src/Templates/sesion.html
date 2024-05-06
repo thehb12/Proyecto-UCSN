@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/usuario.css') }}" />
   <link rel="stylesheet" href="../static/css/usuario.css">
   <link rel="icon" href="../static/images/Recurso-1.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
@@ -23,6 +24,9 @@
       </div>
       <div class="cont-tabla">
         <div class="main">
+          <button class="botonpdf" onclick="generarPDF()">Certificado 1</button>
+          <button class="botonpdf2" onclick="generarPDF()">Constancia</button>
+          <button class="botonpdf3" onclick="generarPDF()">Constancia 2</button>
           {% include 'certificado.html' %}
         </div>
       </div>

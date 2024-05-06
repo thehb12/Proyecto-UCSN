@@ -1,21 +1,22 @@
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
-  <p>{{ message }}</p>
+<p>{{ message }}</p>
 {% endfor %}
 {% endif %}
 {% endwith %}
+
 <form action="/add_trabajadores" method="POST">
-    <input type="text" name="nombres" placeholder="nombres">
-    <input type="text" name="tipo_de_id"placeholder=" tipo_de_id">
-    <input type="number" name="numero_de_id"placeholder="numero_de_id">
-    <input type="text" name="lugar_expedicion"placeholder=" lugar_expedicion">
-    <input type="text" name="cargo"placeholder="cargo">
-    <input type="text" name="correo"placeholder="correo">
-    <input type="number" name="fecha_inicial "placeholder="fecha_inicial">
-    <input type="number" name="fecha_final "placeholder="fecha_final">
-    <input type="number" name="saldo"placeholder="saldo">
-    <input type="number" name="auxt"placeholder="auxt">
-    <input type="text" name="estado"placeholder="estado">
-    <button type="submit">Guardar</button>
+  <input type="text" name="nombres" placeholder="Nombres" required>
+  <input type="text" name="tipo_id" placeholder="Tipo ID" required>
+  <input type="number" name="numero_id" placeholder="Número ID" required>
+  <input type="text" name="lugar_expedicion" placeholder="Lugar de Expedición" required>
+  <input type="text" name="cargo" placeholder="Cargo" required>
+  <input type="email" name="correo" placeholder="Correo" required>
+  <input type="date" name="fecha_inicial" placeholder="Fecha de Inicio" required>
+  <input type="date" name="fecha_final" placeholder="Fecha de Fin">
+  <input type="number" name="saldo" placeholder="Saldo" required>
+  <input type="number" name="auxt" placeholder="Auxilio de Transporte" required>
+  <input type="text" name="estado" placeholder="Estado" required>
+  <button type="submit">Guardar</button>
 </form>
