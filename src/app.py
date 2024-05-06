@@ -1,9 +1,12 @@
+from datetime import datetime
 from flask import Flask, jsonify, render_template, request, redirect, url_for, session, flash, make_response
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mysqldb import MySQL
 from config import Config
 import hashlib
-
+from num2words import num2words
+import locale
+locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
 app = Flask(__name__)
 app.config.from_object(Config) 
@@ -43,7 +46,7 @@ def iniciar_sesion():
         nombre_usuario = usuario[1]
         cargo = usuario[5]
         fecha_inicio = usuario[7]
-        correo = usuario[0]
+        correo = usuario[6]
         password = usuario[11]
     
 
@@ -114,16 +117,20 @@ def sesion():
             
             conn = mysql.connection
             cursor = conn.cursor()
-            print(correo_usuario)
-            cursor.execute("SELECT * FROM personalucsn WHERE correo = %s ", (correo_usuario,))
+            cursor.execute("SELECT nombres, tipo_id, numero_id, lugar_expedicion, cargo, fecha_i, saldo, auxt FROM personalucsn WHERE correo =  %s ", (correo_usuario,))
             datos_usuario  = cursor.fetchone()
             cursor.close()
-        
-            response = make_response(render_template('sesion.html', datos=datos_usuario , nombre_usuario=nombre_usuario))
+
+            saldo_en_palabras = num2words(float(datos_usuario[6]), lang='es')  # Convertir el saldo a palabras
+            saldo_aux = num2words(float(datos_usuario[7]), lang='es') 
+            fecha_actual = datetime.now().strftime('%d de %B de %Y')
+
+            response = make_response(render_template('sesion.html', nombre_usuario=nombre_usuario, datos_usuario=datos_usuario, saldo_aux=saldo_aux, saldo_en_palabras=saldo_en_palabras, fecha_actual=fecha_actual))
             response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'  # Deshabilitar la caché
             return response
         else:
             return redirect('/')
+
     else:
         return redirect('/')
 
@@ -194,11 +201,5 @@ def cambiopassword():
         return render_template('admin.html', mensaje=mensaje, icon=icon)
     return redirect('/')
             
- 
-        
-        
-
-            
-
 if __name__ == '__main__':
     app.run(port=3000, debug=True)

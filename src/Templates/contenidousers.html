@@ -92,7 +92,6 @@
 
     /* Fondo oscuro semi-transparente */
     #modalBackdrop {
-
         display: none;
         position: fixed;
         z-index: 9998;
@@ -105,18 +104,14 @@
 
     .profile-container {
         display: flex;
+        justify-content: space-between;
+        /* Añadido para mantener el logo a la derecha */
         align-items: center;
-        /* Alinear verticalmente al centro */
-        padding: 20px;
-        /* Espacio interior */
+        padding: 10px;
         background-color: #f5f5f5;
-        /* Fondo gris claro */
         border-radius: 10px;
-        /* Bordes redondeados */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* Sombra ligera para efecto de profundidad */
         margin: 10px 0;
-        /* Espacio exterior */
     }
 
     .profile-pic {
@@ -128,10 +123,21 @@
         /* Hace que la imagen tenga forma circular */
         object-fit: cover;
         /* Asegura que la imagen cubra completamente el contenedor */
-        border: 3px solid #4c59af;
+        border: 4px solid #4c59af;
         /* Borde verde para resaltar */
         margin-right: 20px;
         /* Espacio entre imagen y texto */
+    }
+
+    /* Nuevo estilo para el logo */
+    .logo-container {
+        margin-left: 20px;
+        /* Espacio entre el texto y el logo */
+    }
+
+    .logo {
+        width: 120px;
+        object-fit: cover;
     }
 
     .modal-text {
@@ -205,13 +211,16 @@
                     <div class="modal-text">
                         <h2>Julian Esteban Hernandez Bohorquez</h2>
                         <p>Analista y Desarrollador de Software</p>
-                        <p>Desarrolle este aplicacion Web.</p>
-
+                        <p>Desarrolle esta aplicacion Web.</p>
                         <p>Contacto: <a href="tel:+57 3054671363">+57 3054671363</a></p>
                         <p>Perfil como Desarrollador:
                             <a href="https://github.com/thehb12" target="_blank">GitHub</a>
-
                         </p>
+                    </div>
+                    <!-- Añadir el contenedor para el logo -->
+                    <div class="logo-container">
+                        <img src="{{ url_for('static', filename='images/ADSOFINAL2.png') }}" alt="Logo del estudio"
+                            class="logo">
                     </div>
                 </div>
             </div>

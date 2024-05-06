@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `personalucsn`
 --
+/* nombres, tipo_id, numero_id, lugar_expedicion, cargo, fecha_i, saldo, auxt      */
 
 DROP TABLE IF EXISTS `personalucsn`;
 CREATE TABLE IF NOT EXISTS `personalucsn` (
