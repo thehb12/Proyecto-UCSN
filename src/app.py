@@ -152,37 +152,37 @@ def cerrar_sesion():
     return redirect(url_for('index'))
 
 
-# @app.route('/add_trabajadores', methods=['POST'])
-# def add_trabajadores():
-#     if request.method == 'POST':
-#         # Obtener datos del formulario
-#         nombres = request.form['nombres']
-#         tipo_de_id = request.form['tipo_id']
-#         numero_de_id = request.form['numero_id']
-#         cargo = request.form['cargo']
-#         correo = request.form['correo']
-#         fecha_inicial = request.form['fecha_inicio']
-#         fecha_final = request.form.get('fecha_fin')  # fecha_fin puede ser opcional
-#         saldo = request.form['saldo']
-#         auxt = request.form['auxt']
-#         estado = request.form['estado']
+@app.route('/add_trabajadores', methods=['POST'])
+def add_trabajadores():
+     if request.method == 'POST':
+         # Obtener datos del formulario
+         nombres = request.form['nombres']
+         tipo_de_id = request.form['tipo_id']
+         numero_de_id = request.form['numero_id']
+         cargo = request.form['cargo']
+         correo = request.form['correo']
+         fecha_inicial = request.form['fecha_inicio']
+         fecha_final = request.form.get('fecha_final')  
+         saldo = request.form['saldo']
+         auxt = request.form['auxt']
+         estado = request.form['estado']
 
-#         # Insertar en la base de datos
-#         cur = mysql.connection.cursor()
-#         cur.execute(
-#             "INSERT INTO personalucsn (nombres, tipo_id, numero_id, cargo, correo, fecha_inicial, fecha_final, saldo, auxt, estado) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
-#             (nombres, tipo_de_id, numero_de_id, cargo, correo, fecha_inicial, fecha_final, saldo, auxt, estado)
-#         )
+         # Insertar en la base de datos
+         cur = mysql.connection.cursor()
+         cur.execute(
+             "INSERT INTO personalucsn (nombres, tipo_id, numero_id, cargo, correo, fecha_inicial, fecha_final, saldo, auxt, estado) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+             (nombres, tipo_de_id, numero_de_id, cargo, correo, fecha_inicial, fecha_final, saldo, auxt, estado)
+         )
 
-#         mysql.connection.commit()  # Corrige el error de 'cummit'
-#         cur.close()  # Cierra el cursor después de usarlo
+         mysql.connection.commit()  # Corrige el error de 'cummit'
+         cur.close()  # Cierra el cursor después de usarlo
         
-#         # Mensaje de confirmación y redireccionamiento
-#         flash('Trabajador agregado con éxito', 'success')
-#         return redirect(url_for('mostrartrabajadores'))  # Asegúrate de que la ruta existe y es correcta
+         # Mensaje de confirmación y redireccionamiento
+         flash('Trabajador agregado con éxito', 'success')
+         return redirect(url_for('mostrartrabajadores'))  # Asegúrate de que la ruta existe y es correcta
 
-#     # Si no es POST, redireccionar a otra ruta (seguridad)
-#     return redirect(url_for('mostrartrabajadores'))
+     # Si no es POST, redireccionar a otra ruta (seguridad)
+     return redirect(url_for('mostrartrabajadores'))
     
 @app.route('/cambiopassword', methods=['POST'])
 def cambiopassword():
