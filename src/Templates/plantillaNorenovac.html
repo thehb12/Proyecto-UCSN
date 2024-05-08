@@ -57,12 +57,13 @@
             </p>
             <p
                 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
-                <strong><span style='font-family:"Arial",sans-serif;'>TANIA MILENA MEDINA FLOREZ</span></strong>
+                <strong><span style='font-family:"Arial",sans-serif;'>{{nombre_usuario}}</span></strong>
             </p>
             <p
                 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
-                <strong><span style='font-family:"Arial",sans-serif;'>CC: 1.096.211.701 de
-                        Barrancabermeja.</span></strong>
+                <strong><span style='font-family:"Arial",sans-serif;'>{{ 'Cedula de Ciudadania' if
+                        datos_usuario[1] == 'CC' else datos_usuario[1] }}: {{datos_usuario[2]}} de
+                        {{datos_usuario[3]}}.</span></strong>
             </p>
             <p
                 style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;text-align:justify;'>
@@ -101,7 +102,7 @@
                     la
                     determinaci&oacute;n de no renovar su contrato de trabajo a t&eacute;rmino fijo suscrito el
                     d&iacute;a
-                    diecisiete (17) de octubre de 2023, que, de acuerdo con el encabezado, las cl&aacute;usulas pactadas
+                    diecisiete {{datos_usuario[5]}}, que, de acuerdo con el encabezado, las cl&aacute;usulas pactadas
                     y
                     renovaciones presentadas, finaliza el pr&oacute;ximo diecis&eacute;is &nbsp;(16) de abril de
                     2024.</span>

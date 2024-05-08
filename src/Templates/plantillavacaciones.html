@@ -54,10 +54,11 @@
                 <strong>SE&Ntilde;ORA</strong>
             </p>
             <p style='margin-right:0cm;margin-left:0cm;font-size:16px;font-family:"Arial",sans-serif;margin:0cm;'>
-                <strong>LUZ DARY CORREO GUTIERREZ</strong>
+                <strong>{{nombre_usuario}}</strong>
             </p>
             <p style='margin-right:0cm;margin-left:0cm;font-size:16px;font-family:"Arial",sans-serif;margin:0cm;'>
-                CC.63.467.897 &nbsp;de Barrancabermeja</p>
+                {{ 'Cedula de Ciudadania' if
+                datos_usuario[1] == 'CC' else datos_usuario[1] }}.{{datos_usuario[2]}} &nbsp;de {{datos_usuario[3]}}</p>
             <p style='margin-right:0cm;margin-left:0cm;font-size:16px;font-family:"Arial",sans-serif;margin:0cm;'>
                 Ciudad.
             </p>
