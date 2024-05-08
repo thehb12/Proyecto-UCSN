@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 29-04-2024 a las 19:30:44
+-- Tiempo de generación: 08-05-2024 a las 21:42:37
 -- Versión del servidor: 8.2.0
 -- Versión de PHP: 8.2.13
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `personalucsn`
 --
-/* nombres, tipo_id, numero_id, lugar_expedicion, cargo, fecha_i, saldo, auxt      */
 
 DROP TABLE IF EXISTS `personalucsn`;
 CREATE TABLE IF NOT EXISTS `personalucsn` (
@@ -45,14 +44,14 @@ CREATE TABLE IF NOT EXISTS `personalucsn` (
   `estado` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `numero_id` (`numero_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=230 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=232 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `personalucsn`
 --
 
 INSERT INTO `personalucsn` (`id`, `nombres`, `tipo_id`, `numero_id`, `lugar_expedicion`, `cargo`, `correo`, `fecha_i`, `fecha_f`, `saldo`, `auxt`, `contraseña_hash`, `estado`) VALUES
-(1, 'Fernandez  Serna Geraldine', 'CC', '1096255504', 'Barrancabermeja', 'Auxiliar de enfermeria ', 'geriithaferser@gmail.com', '2024-01-20', '2024-07-18', 1300000.00, '162000', 'df4865fca1f159162557359ef967f9502087f57527b0e030e139933e54f3061e', NULL),
+(1, 'Fernandez  Serna Geraldine', 'CC', '1096255504', 'Barrancabermeja', 'Auxiliar de enfermeria ', 'geriithaferser@gmail.com', '2024-01-20', '2024-07-18', 1300000.00, '162000', '689d07204afcb73ed10d6a1c2c6fd8d29cf1b6b3f0973e12ec30b5392da5f7fb', NULL),
 (2, 'Berrio Agamez Luis', 'CC', '91446618', 'Barrancabermeja', 'Enfermero', 'iberrioa_77@hotmail.com', '0000-00-00', '0000-00-00', 0.00, NULL, '4304c18053635d72b45cfaafcece088c68d11f0e3e5781958563662c09252782', NULL),
 (3, 'Quintero Angarita Jaime', 'CC', '80227701', 'Bogotá D.C.', '', 'jaimequinteroa@hotmail.com', '2012-09-01', '1900-01-00', 5494600.00, NULL, 'e34d9fcd2729850454aaf36b2c204db732d8c108d0c01be86f8775f62bd65b29', NULL),
 (4, 'Garcia Campo Lid Julieth', 'CC', '1096229002', 'Barrancabermeja', 'Recepcionista', 'juliethcampo28@hotmail.com', '2022-10-01', '2024-09-30', 1300000.00, '162000', '4568bad773861dead1844e3ec23054cbb46fa8869896fb095619540574539730', NULL),
@@ -193,7 +192,7 @@ INSERT INTO `personalucsn` (`id`, `nombres`, `tipo_id`, `numero_id`, `lugar_expe
 (139, ' Ballesteros Maria Del Pilar', 'CC', '37933208', 'Barrancabermeja', 'Coordinadora de Facturación', 'mapiba04@hotmail.com', '2018-10-01', '2024-09-29', 1802000.00, '162000', 'd61ac47a9894c6fd6056d82fecac7cd3c39445cf0e44902fbe1f4eabccec3766', NULL),
 (140, 'Rodirguez Maldonado Miguel', 'CC', '1098683695', 'Bucaramanga', 'JEFE P&P', 'miguelenf 7@gmail.com', '2021-06-11', '2024-06-09', 2544000.00, '162000', 'c5f14dbbae3ee3657dc901d85d2ac3896bfabf208f861cdd77b13359f03b3b20', NULL),
 (141, ' Pineda Rangel Valentina', 'CC', '1000156250', 'Barrancabermeja', 'Coordinador de Calidad / Medico General Servicio Social Obligatorio (S.SO)', 'valentinapineda1105@gmail.com', '2023-07-28', '2024-07-27', 3804400.00, NULL, '8ba33f43192eab4f3f83acf43928a568d5129398fe6f32ccd2383c1089738619', NULL),
-(142, ' Quintero Vega Juan Carlos', 'CC', '1000502202', 'Bogotá D.C.', 'Admin Gerente / Medico General Servicio Social Obligatorio (S.SO)', 'juank1499@hotmail.com', '2023-07-28', '2024-07-27', 3804400.00, NULL, '1e7fc990a7eafdc8343667f985f9dae2baf890249b08cb5d76ff70374f491b76', NULL),
+(142, ' Quintero Vega Juan Carlos', 'CC', '1000502202', 'Bogotá D.C.', ' Gerente / Medico General Servicio Social Obligatorio (S.SO)', 'juank1499@hotmail.com', '2023-07-28', '2024-07-27', 3804400.00, NULL, '1e7fc990a7eafdc8343667f985f9dae2baf890249b08cb5d76ff70374f491b76', NULL),
 (143, ' Vega Diaz Rosalba', 'CC', '52411709', 'Bogotá D.C.', 'Director Tecnico Del Servicio  Farmaceutico', 'rosavegadiaz@hotmail.com', '2017-08-14', '2024-08-13', 2717400.00, NULL, '08ed91170efc6328f4754f1c2c2e4b15bddf96d84bb338bb0218e85fb4137b78', NULL),
 (144, 'Leal Lina Liseth', 'CC', '1096237677', 'Barrancabermeja', 'Auxiliar En Glosas', 'lina.leal6@gmail.com', '2022-03-24', '2025-03-23', 1470000.00, '162000', 'c4d86f5990a23ecc080236519657f6a4a66babaf19b904a02924adff7920e4a2', NULL),
 (145, 'Sepulveda Arenilla Silvia Juliana', 'CC', '1098719181', 'Bucaramanga', 'Admin', 'julianasa0392@gmail.com', '2023-10-10', '2024-01-09', 1454400.00, '162000', '697acce393ea6ae0ff6892e8354aa9f51aeb661c67ccedd218c3e8ff268e028c', NULL),
@@ -281,7 +280,8 @@ INSERT INTO `personalucsn` (`id`, `nombres`, `tipo_id`, `numero_id`, `lugar_expe
 (226, 'Perez Barragan Maria Del Carmen', 'CC', '1103672683', 'Puerto Parra', 'Auxiliar de Enfermeria', 'mariperezb001@gmail.com', '2024-03-20', '2024-06-19', 1300000.00, '162000', 'd2e6602a0a0edbe504a43de896b1403b6c9ab4ddcac25bd1c680ed3b5449bdd9', NULL),
 (227, 'Macia Diaz Isaac', 'CC', '1005182523', 'Barrancabermeja', '', 'isaac13890640@gmail.com', '0000-00-00', '1900-03-30', 1300000.00, '162000', 'f6dd3411413f2bc0407950dc2f06f983cab8310834b4909da61d019f0eace009', NULL),
 (228, 'Lopez Alfonzo Deisy Tatiana', 'CC', '1005272044', 'Barrancabermeja', 'Auxiliar de Enfermeria', 'tl563136@gmail.com', '2024-04-01', '2024-06-30', 1300000.00, '162000', 'fd15f3a5bd9ab01b5c6892fc3f9988ce21dec8a7b2cdd3972624fad4053ceddd', NULL),
-(229, 'Rodriguez Fierro Dayana del  Carmen', 'CC', '1080570221', 'Plato', 'Auxiliar Contable', 'rodriguezfierrodayana@mail.com', '2024-04-01', '2024-06-30', 1300000.00, '162000', 'b10ad273a64d952e9cae7b2148c3ab7d343ca4b099e29c7bf72ecfda0c5a1302', NULL);
+(229, 'Rodriguez Fierro Dayana del  Carmen', 'CC', '1080570221', 'Plato', 'Auxiliar Contable', 'rodriguezfierrodayana@mail.com', '2024-04-01', '2024-06-30', 1300000.00, '162000', 'b10ad273a64d952e9cae7b2148c3ab7d343ca4b099e29c7bf72ecfda0c5a1302', NULL),
+(231, 'Administrador ', 'CC', '6222324100403', NULL, 'Admin', 'admin', NULL, NULL, NULL, NULL, 'b5cdffe70dca819a89fe91b0f4ccc93164bc7f2a29140410870f3927635e44e3', NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
