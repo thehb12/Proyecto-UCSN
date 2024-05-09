@@ -134,7 +134,7 @@ def sesion():
     else:
         return redirect('/')
 
-
+    
 @app.route('/perfil')
 def perfil():
     if 'logged_in' in session:

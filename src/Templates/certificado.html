@@ -1,88 +1,88 @@
-<style>
-    .uppercase {
-        text-transform: uppercase;
-    }
-
-    body {
-        overflow: hidden;
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2617fa64-bbaf-4199-aad4-f69cb0544f61</title>
+<meta name="author" content="CALIDAD" />
+<style type="text/css">
+    * {
         margin: 0;
         padding: 0;
+        text-indent: 0;
     }
 
-    .certificado {
-        font-family: Arial;
-        font-size: 12px;
-        font-weight: 100;
-        width: 90%;
-        overflow: hidden;
-        zoom: 50%;
-        margin: 50px;
+    h2 {
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 10.5pt;
     }
 
-    .margins {
-        /* border: 0.5px solid black; */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        /* overflow-x: none; */
-        width: 100%;
-        height: 90%;
-        padding: 2%;
-        
+    .s1 {
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10.5pt;
     }
 
-    /* 
+    h1 {
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 12pt;
+    }
+
     p {
-        margin: 0.5em 0;
-    } */
-</style>
-<!-- <button class="certificado"> Seleccione el tipo de certidicado </button> -->
-<div class="margins">
-    <div class="certificado" id="certificado">
-
-
-        <p style="text-align: center;"><strong>UNIDAD CLINICA SAN NICOLAS LTDA.</strong></p>
-        <p style="text-align: center;">Calle 52 No 17-85 Tel: 6225895-3187765427</p>
-        <p style="text-align: center;">Barrancabermeja – Santander</p>
-        <p style="text-align: center;">NIT. 900.064.250-4.</p>
-        <p style="text-align: center;">&nbsp;</p>
-        <p style="text-align: center;"><strong>CERTIFICACIÓN</strong></p>
-        <p style="text-align: center;">&nbsp;</p>
-        <p>La Unidad Cl&iacute;nica San Nicol&aacute;s Ltda., certifica que el se&ntilde;or@ <strong><span
-                    class="uppercase">{{nombre_usuario}}</span></strong> identificad@ con {{ 'Cedula de Ciudadania' if
-            datos_usuario[1] == 'CC' else datos_usuario[1] }}
-            n&uacute;mero {{datos_usuario[2]}} de {{datos_usuario[3]}}, labora en esta
-            instituci&oacute;n
-            desempe&ntilde;ando el cargo de <strong>{{datos_usuario[4]}}.</strong></p>
-        <p>Ejecuta a la fecha, labores propias de su cargo, mediante contrato laboral a t&eacute;rmino fijo, desde el
-            {{datos_usuario[5]}}, devengando salario mensual de {{ saldo_en_palabras }}, (
-            {{datos_usuario[6]}} ), con auxilio de transporte de {{saldo_aux}}, ({{datos_usuario[7]}}).</p>
-        <p>La presente se expide en Barrancabermeja, a solicitud del interesado, el d&iacute;a {{ fecha_actual }}</p>
-        <p>&nbsp;</p>
-        <p>Agradezco la atenci&oacute;n Prestada.</p>
-        <p>&nbsp;</p>
-        <p>Cordialmente,</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p style="text-align: center;"><strong>EUNICE ANGARITA GALVIS</strong></p>
-        <p style="text-align: center;">Representante Legal Suplente.</p>
-
-    </div>
-
-
-</div>
-<script>
-    function generarPDF() {
-        const element = document.getElementById('certificado');
-        html2pdf()
-            .from(element)
-            .set({
-                margin: [50, 30, 10, 40], // top, right, bottom, left
-                filename: 'certificado.pdf',
-                pagebreak: { mode: 'avoid-all' },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' }
-            })
-            .save();
+        color: black;
+        font-family: Arial, sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 12pt;
+        margin: 0pt;
     }
-</script>
+</style>
+
+
+<body>
+    <p style="text-indent: 0pt;text-align: left;"><span>
+            <table border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><img width="85" height="80"
+                            src="data:image/jpg;base64,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" />
+                    </td>
+                </tr>
+            </table>
+        </span></p>
+    <h2 style="padding-top: 3pt;text-indent: 0pt;text-align: center;">UNIDAD CLINICA SAN NICOLAS LTDA.</h2>
+    <p class="s1" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">Calle 52 No 17-85 Tel:
+        6225895-3187765427</p>
+    <p class="s1" style="padding-top: 2pt;padding-left: 146pt;text-indent: 0pt;line-height: 119%;text-align: center;">
+        Barrancabermeja – Santander NIT. 900.064.250-4.</p>
+    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+    <h1 style="padding-left: 1pt;text-indent: 0pt;text-align: center;">CERTIFICACIÓN</h1>
+    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+    <p style="padding-left: 5pt;text-indent: 0pt;line-height: 115%;text-align: justify;">La Unidad Clínica San Nicolás
+        Ltda., certifica que el señor <b>{{nombre_usuario}} </b>identificado con {{ 'Cedula de
+        Ciudadania' if
+        datos_usuario[1] == 'CC' else datos_usuario[1] }} numero {{datos_usuario[2]}} de {{datos_usuario[3]}}, labora en
+        esta institución
+        desempeñando el cargo de <b>{{datos_usuario[4]}}.</b></p>
+    <p style="padding-top: 9pt;padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: justify;">Ejecuta a la
+        fecha, labores propias de su cargo, mediante contrato laboral a término fijo, desde el {{datos_usuario[5]}},
+        devengando salario mensual de {{ saldo_en_palabras }}, (
+        {{datos_usuario[6]}} ), con auxilio de transporte de {{saldo_aux}}, ({{datos_usuario[7]}}).</p>
+    <p style="padding-top: 10pt;padding-left: 5pt;text-indent: 0pt;line-height: 148%;text-align: justify;">La presente
+        se expide en Barrancabermeja, a solicitud del interesado, el </p>
+    <p style="padding-top: 10pt;text-indent: 0pt;text-align: left;"><br /></p>
+    <p style="padding-left: 5pt;text-indent: 0pt;text-align: left;">Agradezco la atención Prestada.</p>
+    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+    <p style="padding-left: 5pt;text-indent: 0pt;text-align: left;">Cordialmente,</p>
+    <p style="text-indent: 0pt;text-align: left;"><br /></p>
+    <p style="padding-left: 123pt;text-indent: 0pt;line-height: 1pt;text-align: left;" />
+    <h1 style="padding-top: 1pt;text-indent: 0pt;text-align: center;">EUNICE ANGARITA GALVIS</h1>
+    <p style="padding-top: 1pt;text-indent: 0pt;text-align: center;">Representante Legal Suplente.</p>
+</body>

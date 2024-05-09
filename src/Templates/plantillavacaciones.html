@@ -1,3 +1,4 @@
+<meta charset="UTF-8" />
 <style>
     body {
         margin: 0;
@@ -9,18 +10,14 @@
         font-size: 12px;
         font-weight: 100;
         width: 90%;
-        overflow: auto;
-        zoom: 60%;
+        overflow: auto; 
     }
 
     .margins {
-        /* border: 0.5px solid black; */
+        display: none;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        /* overflow-x: none; */
         width: 100%;
         height: 100%;
-        padding: 2%;
-
     }
 </style>
 
@@ -161,18 +158,3 @@
         </div>
     </div>
 </body>
-<script>
-    function generarPDF3() {
-        const element = document.getElementById('certificado3');
-        html2pdf()
-            .from(element)
-            .set({
-                margin: [50, 30, 10, 40], // top, right, bottom, left
-                filename: 'certificado.pdf',
-                pagebreak: { mode: 'avoid-all' },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' }
-            })
-            .save();
-    }
-</script>

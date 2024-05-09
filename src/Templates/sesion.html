@@ -12,12 +12,14 @@
 </head>
 <style>
   #botonpdf {
-    background-image: url('../static/images/verificado.svg'); 
+    background-image: url('../static/images/verificado.svg');
     background-size: contain;
     background-repeat: no-repeat;
     width: 100px;
-    height: 100px; 
-    position: relative;
+    height: 100px;
+    position: absolute;
+    top: 85%;
+    margin-right: 56%;
   }
 
   #botonpdf2 {
@@ -26,7 +28,8 @@
     background-repeat: no-repeat;
     width: 100px;
     height: 100px;
-    position: relative;
+    position: absolute;
+    top: 85%;
   }
 
   #botonpdf3 {
@@ -35,15 +38,20 @@
     background-repeat: no-repeat;
     width: 100px;
     height: 100px;
-    position: relative;
+    position: absolute;
+    top: 85%;
+    margin-left: 60%;
   }
 
+  /* 
   .sec {
     display: flex;
     width: 30%;
     height: 90%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
+    zoom: 60%;
+
+  } */
 </style>
 
 <body>
@@ -60,23 +68,59 @@
       </div>
       <div class="cont-tabla">
         <div class="main">
-
-          <div class="sec">
-            {% include 'certificado.html' %}
-          </div>
-
-          <div class="sec">
-            {% include 'plantillaNorenovac.html' %}
-          </div>
-
-          <div class="sec">
-            {% include 'plantillavacaciones.html' %}
-          </div>
+         <div>
+          {% include 'certificado.html' %}
+         </div>
           
-            <a id="botonpdf" href="#" onclick="generarPDF(); return false;"></a>
-            <a id="botonpdf2" href="#" onclick="generarPDF2(); return false;"></a>
-            <a id="botonpdf3" href="#" onclick="generarPDF3(); return false;"></a>
+
+          <a href="#">Descargar</a>
+
+          <!-- <a id="botonpdf" href="#" onclick="generarPDF(); return false;"></a>
+          <a id="botonpdf2" href="#" onclick="generarPDF2(); return false;"></a>
+          <a id="botonpdf3" href="#" onclick="generarPDF3(); return false;"></a> -->
         </div>
+        <script>
+          function generarPDF2() {
+            const element = document.getElementById('certificado2');
+            html2pdf()
+              .from(element)
+              .set({
+                margin: [10, 10, 10, 20], // top, right, bottom, left
+                filename: 'Notificación de no renovación del contrato de trabajo.pdf',
+                pagebreak: { mode: 'avoid-all' },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' }
+              })
+              .save();
+
+          }
+          function generarPDF() {
+            const element = document.getElementById('certificado');
+            html2pdf()
+              .from(element)
+              .set({
+                margin: [50, 30, 10, 40], // top, right, bottom, left
+                filename: 'certificado.pdf',
+                pagebreak: { mode: 'avoid-all' },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' }
+              })
+              .save();
+          }
+          function generarPDF3() {
+            const element = document.getElementById('certificado3');
+            html2pdf()
+              .from(element)
+              .set({
+                margin: [50, 30, 10, 40], // top, right, bottom, left
+                filename: 'Vacaciones.pdf',
+                pagebreak: { mode: 'avoid-all' },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' }
+              })
+              .save();
+          }
+        </script>
       </div>
       <div class="cont-tabla">
         <div class="main">
